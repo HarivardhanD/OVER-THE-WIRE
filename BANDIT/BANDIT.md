@@ -69,3 +69,24 @@
 - So her =e we had to find a password, where user was bandit7 and group was bandit6
 - this ones easy , just use ` find / -type f -size 33c -user bandit7 -group bandit6 `
 - we get it --> morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+# LEVEL 7 -> LEVEL 8
+
+- The password was in data.txt , besgdes millionth
+- Just used ` cat data.txt | grep millionth ` , this fetched me password --> dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+# LEVEL 8 -> LEVEL 9
+
+- Here we were having data.txt file with so , sooo many repeating lines , so i did cat.txt to see if it if i can find the password manually , but quite tough
+- so the best command i found for this is -> ` sort data.txt | uniq -u `\
+- sort , first sorts all the similar  liines next to each other and then uniq -u removes the repeating lines.
+- password -> 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+# LEVEL 9 -> LEVEL 10
+
+- The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+- i iinitally tried doing cat data.txt , but ah i coulndt understand whats going on in that , and then i did find out to get the human readable strings from txt or file , we can use the following command 
+` strings data.txt ` , yes  strings command gave me human readble strings, but as question said  password is having ' = ' before it so my final command was -> ` strings data.txt | grep = `
+
+- password -> FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
