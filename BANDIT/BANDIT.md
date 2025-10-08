@@ -90,3 +90,28 @@
 ` strings data.txt ` , yes  strings command gave me human readble strings, but as question said  password is having ' = ' before it so my final command was -> ` strings data.txt | grep = `
 
 - password -> FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+# LEVEL 10 ->LEVEL 11
+
+- Here we have data.txt , but its in base64
+- so i did cat data.txt and i got a code, but since in question it was gives that it is base64 , then we have to conver it to normal one which can be done easilty using -> ` base64 -d data.txt`
+- where -d is decoding .
+
+- password -> dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+
+# LEVEL 11 -> LEVEL 12
+
+- The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions !!
+
+- As we know , we will have to rotate it here by 13 translations , in order to get the proper solution.
+
+- So what we do is , use ` tr ` 
+
+- command is as follows -> ` cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m' `
+
+- Here `tr` is translate , and as we know we have to convert it to 13 characters, as we know A->N,soo from A , N is the 13th position and then , so after `tr`, we can see `A-Za-z` this means we want to translate the letter both upper and lowercasse , from A to Z and from a to z.
+
+- Now , besides that we can see `N-ZA-Mn-za-m` , now the reason for this is , as we know 13 rotations , so A -> N , so we wrote 'N' in the beginning and then , we write N-ZA-M, because , for A , N is the 13 rotation and then , ZA is written because , For `tr` -> tr understands character ranges like A-Z, a-z, 0-9.But these ranges must go forward in ASCII order [ ascending order]. 
+
+- Yes , so we Write N-ZA,means N to Z ,A to M, i cant directky write M , or some other way as it will loose its meaning , ie alphabetical order . simillary we did for lowecase.
