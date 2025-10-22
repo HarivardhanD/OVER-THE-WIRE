@@ -115,3 +115,59 @@
 - Now , besides that we can see `N-ZA-Mn-za-m` , now the reason for this is , as we know 13 rotations , so A -> N , so we wrote 'N' in the beginning and then , we write N-ZA-M, because , for A , N is the 13 rotation and then , ZA is written because , For `tr` -> tr understands character ranges like A-Z, a-z, 0-9.But these ranges must go forward in ASCII order [ ascending order]. 
 
 - Yes , so we Write N-ZA,means N to Z ,A to M, i cant directky write M , or some other way as it will loose its meaning , ie alphabetical order . simillary we did for lowecase.
+
+- Password is -> 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+
+# LEVEL 12 -> LEVEL 13
+
+- The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+- So here we have a file , which is data.txt which is a hexadecimal file and binary file is compresses inside it again and again ( Like zin inside Zip )
+
+- Now The steps is as follows:
+
+    - So initially as mentionoed in question i created a directory in temp, secure directory using the command ` mktemp -d ` , which means make directory of random name in temp dir.
+
+    - Them , we have to move the file data.txt from home directory to temp.
+
+    - First when u do , ` mktemp -d ` u will get ` /tmp/tmp.HtHo8wwNAt `
+    - Now using cd , move to ` cd /tmp/tmp.HtHo8wwNAt `
+    - After moving we will have to move the data.txt from " home dir" to ` /tmp/tmp.HtHo8wwNAt ` .
+    - this moving of file, data.txt from home to current dir can be done using the following command ` cp ~/data.txt . `
+        - cp = copy
+        - `~` = home directory 
+        - data.txt = file name
+        - `.` = current directory.
+
+    - ter moving, since we have data.txt in hexadump , we will reverse it to binary.` xxd -r data.txt data.bin `. Where
+        - xxd = type of hexdecimal
+        - `-r` = reverse the hexadecimal
+        - data.txt = original hexa file name
+        - data.bin = convert to data.bin, ie binary file
+
+    - After this , whem i did `file data.bin` , i got a message " its a gzip "
+
+    - Now i had to convert it from bin to gzip , ie using command ` mv data.bin data.gz` Where
+        - mv -> move
+        - data.bin -> bianry file name
+        - data.gz -> gunzip file name
+
+    - AFter creatign .gz, i have to gunzip it using the following : ` gunzip data.gz `
+
+    - Then cat it , u find that u dont get the answer, so do it again and again with different types of zips until u get ASCII
+
+### Command for zipping files :
+
+| Type shown by `file`  | What to do next                        |
+| --------------------- | -------------------------------------- |
+| gzip compressed data  | `mv data data.gz && gunzip data.gz`    |
+| bzip2 compressed data | `mv data data.bz2 && bunzip2 data.bz2` |
+| xz compressed data    | `mv data data.xz && unxz data.xz`      |
+| POSIX tar archive     | `mv data data.tar && tar -xf data.tar` |
+| Zip archive           | `mv data data.zip && unzip data.zip`   |
+| ASCII text            | `cat data`                             |
+
+### -----------------------------------------------------------------
+
+- Password is  -> FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
